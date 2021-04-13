@@ -1,11 +1,12 @@
 #!coding=utf-8
-import numpy as np
-from collections import OrderedDict
-
-from lasio import las_
-from proj import inv_wgs84, trans_wgs84,wgs84_from,wgs84_trans_matrix
+from data.lasio import las_
+from core.proj import inv_wgs84, trans_wgs84,wgs84_from,wgs84_trans_matrix
 import glob2
-from pnts import *
+from data.pnts import Pnts
+import os
+import json
+import numpy as np
+
 
 _STEP = 20
 geomeotric_space = 16
@@ -144,8 +145,8 @@ def pcd2pnts(pcd,outfile):
             'class': attr['class']
         },
     }
-    feature_data = data.get('feature')
-    batch_data = data.get('batch')
+    # feature_data = data.get('feature')
+    # batch_data = data.get('batch')
     pnts = Pnts()
     pnts.write(outfile, data)
 
@@ -214,8 +215,7 @@ def visitNode(childs,tileset_json,tm='',transM=None,outdir=''):
         visitNode(e.childs,_child_node['children'],tm=tm, transM=transM,outdir=outdir)
 
 
-import os
-import json
+
 def convert23dtiles(src,outdir,proj_param,max_level = 15):
     cloudjs = '%s/cloud.js'%(src)
     with open(cloudjs,'r') as f:
@@ -286,12 +286,6 @@ def convert23dtiles(src,outdir,proj_param,max_level = 15):
 
 
 if __name__ == "__main__":
-    #src-->potree data dir,include cloud.js
-    src = r'D:\Program Files (x86)\HiServer\apache2.2\htdocs\potree\pointclouds\test'
-    # out dir
-    outdir = r'D:\Program Files (x86)\HiServer\apache2.2\htdocs\pcdtest1\potree'
-    proj_param = 'EPSG:32649'
-
-    convert23dtiles(src,outdir,proj_param,max_level=5)
+    pass
 
 
