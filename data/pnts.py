@@ -72,7 +72,7 @@ class Pnts:
 
         featureTableSize = pos.nbytes
 
-        if rgb is None: # 判断是否存在rgb
+        if rgb is None: # check rgb
             body_header['RGB'] = {"byteOffset": pos.nbytes}
             featureTableSize += rgb.nbytes
 
