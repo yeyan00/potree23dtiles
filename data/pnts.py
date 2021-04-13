@@ -2,6 +2,8 @@
 import numpy as np
 import json
 
+indent = 4
+
 def cfg2dtype(m):
     k0 = set([ (k[:2],v) for k,v in sorted(m.items()) ])
     k1 = set([ (k[2:],v) for k,v in sorted(m.items()) ])
@@ -28,8 +30,6 @@ class PointCloudV1(object):
         'class': {"byteOffset":0,"type": "SCALAR","componentType": "UNSIGNED_BYTE"}
     }
 
-from collections import OrderedDict
-
 class Pnts:
     data = None
     def read(self,filename):
@@ -41,8 +41,8 @@ class Pnts:
 
     def alignHeader2Bytes(self,data):
         _str = json.JSONEncoder().encode(data)
-        if len(_str) % 4 != 0:
-            for i in range(0, 4 - len(_str) % 4):
+        if len(_str) % indent != 0:
+            for i in range(0, indent - len(_str) % indent):
                 _str += ' '
         bytes = np.array(_str.encode('cp936'))
         return bytes

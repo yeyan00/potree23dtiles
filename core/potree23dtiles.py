@@ -290,7 +290,7 @@ if __name__ == "__main__":
     src = r'D:\Program Files (x86)\HiServer\apache2.2\htdocs\potree\pointclouds\test'
     # out dir
     outdir = r'D:\Program Files (x86)\HiServer\apache2.2\htdocs\pcdtest1\potree'
-    proj_param = 'EPSG:32650'
+    proj_param = 'EPSG:32649'
 
     convert23dtiles(src,outdir,proj_param,max_level=5)
 

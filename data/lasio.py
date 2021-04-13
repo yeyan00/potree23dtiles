@@ -22,12 +22,6 @@ def _profile(s, msg=''):
     logging.debug('%s:\t%.3f' % (msg, cur-s))
     return cur
 
-
-#!coding=utf-8
-
-import numpy
-
-
 def cfg2dtype(m):
     k0 = set([(k[:2], v) for k, v in sorted(m.items())])
     k1 = set([(k[2:], v) for k, v in sorted(m.items())])
