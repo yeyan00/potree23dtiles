@@ -5,13 +5,22 @@
 >> https://github.com/AnalyticalGraphicsInc/3d-tiles/tree/master/specification
 
 
-
 # usage:
-## potreeConvert
+## potreeConvert 1.x version,test 1.7
 ```
 # generate compressed LAZ files instead of the default BIN format.
 ./PotreeConverter.exe C:/data.las -o C:/potree_converted --output-format LAS -p pageName
 ```
+
+## potreeConvert 2.x version,test 2.0
+```
+Optionally specify the sampling strategy:
+Poisson-disk sampling (default): 
+PotreeConverter.exe <input> -o <outputDir> -m poisson
+Random sampling: 
+PotreeConverter.exe <input> -o <outputDir> -m random
+```
+
 
 ## potree23dtiles
 see function for specific usage. 
@@ -29,12 +38,14 @@ convert23dtiles(src,outdir,proj_param,max_level=5)
    
     tileset.readyPromise.then(function(data) {
         viewer.scene.primitives.add(data);
+        viewer.zoomTo(tileset);
     }
-
+    
 ```
 
 ## todos
-   - [ ] support potreeconvert 2.0
+   - [x] support potreeconvert 2.0
+   - [x] support las to 3dtiles,**now only support for windows**
    - [ ] support save to db files(ex:sqlite)
-   - [ ] support las to 3dtiles 
    - [ ] merge multi 3dtiles 
+   - [ ] speed ​​up data convert 

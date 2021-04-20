@@ -2,6 +2,11 @@
 import subprocess
 
 def cmd_exec(cmd_str):
+    """
+    exec process
+    :param cmd_str:
+    :return:
+    """
     st = subprocess.STARTUPINFO
     st.dwFlags = subprocess.STARTF_USESHOWWINDOW
     st.wShowWindow = subprocess.SW_HIDE
@@ -12,8 +17,8 @@ def cmd_exec(cmd_str):
         line = p.stdout.readline()
         line = line.strip()
         if line:
-            print('potree: [{}]'.format(line))
+            print('INFO: [{}]'.format(line))
     if p.returncode == 0:
-        print('ok')
+        print('exec ok')
         return True
     return False

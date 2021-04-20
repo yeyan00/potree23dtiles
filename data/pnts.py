@@ -27,7 +27,7 @@ class PointCloudV1(object):
     }
 
     BatchTable = {
-        'class': {"byteOffset":0,"type": "SCALAR","componentType": "UNSIGNED_BYTE"}
+        'classification': {"byteOffset":0,"type": "SCALAR","componentType": "UNSIGNED_BYTE"}
     }
 
 class Pnts:
@@ -72,7 +72,7 @@ class Pnts:
 
         featureTableSize = pos.nbytes
 
-        if rgb is None: # check rgb
+        if rgb is not None: # check rgb
             body_header['RGB'] = {"byteOffset": pos.nbytes}
             featureTableSize += rgb.nbytes
 
@@ -112,11 +112,5 @@ class Pnts:
         rs=dict(status=1,msg='ok')
         return rs
 
-class Tileset:
-    pass
-
-
 if __name__ == "__main__":
-    hdr = np.zeros((1,), dtype=cfg2dtype(PointCloudV1.Header))
     print(1)
-    # def __init__(self):
